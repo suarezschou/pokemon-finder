@@ -19,6 +19,13 @@ interface Pokemon {
   }>
   height: number
   weight: number
+
+  
+  abilities: Array<{
+    ability: {
+      name: string 
+     } 
+   }>
 }
 
 export default function PokemonGrid() {
@@ -88,6 +95,15 @@ export default function PokemonGrid() {
               <div className="grid grid-cols-2 gap-4 w-full text-sm">
                 <div>Height: {pokemon.height / 10}m</div>
                 <div>Weight: {pokemon.weight / 10}kg</div>
+                <div>
+                Abilities:{" "}
+                {pokemon.abilities.map((abilityObj, index) => (
+                  <span key={index}>
+                    {abilityObj.ability.name}
+                    {index < pokemon.abilities.length - 1 ? ", " : ""} {/* Add comma unless it's the last ability */}
+                  </span>
+                ))} 
+              </div>
               </div>
             </CardContent>
           </Card>
